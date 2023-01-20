@@ -4,8 +4,8 @@ const http = require('http')
 const fs = require('fs');
 const router = require('./router/index')
 const app = express();
-const httport = process.env.PORT || 443;
-const httpsport = process.env.PORT || 80;
+const httport = process.env.PORT || 80;
+const httpsport = process.env.PORT || 443;
 const {engine} = require('express-handlebars');
 const path = require('path');
 https.createServer({
