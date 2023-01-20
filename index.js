@@ -3,7 +3,7 @@ const https = require('https');
 const fs = require('fs');
 const router = require('./router/index')
 const app = express();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 80;
 const {engine} = require('express-handlebars');
 const path = require('path');
 https.createServer({
