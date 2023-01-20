@@ -1,11 +1,9 @@
 const { request } = require("https")
 
-exports.redirector =(req, res, next) => {
-    if(req.secure){
-        res.send('Seguro')
+exports.redirector =(request, response, next) => {
+    if(request.secure){
+        return response.send('Seguro')
         //return res.redirect("https//");
-    }else{
-        res.send('Inseguro')
     }
     next();
 }
