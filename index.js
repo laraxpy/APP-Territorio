@@ -1,15 +1,22 @@
 const express = require('express');
 const https = require('https');
+const http = require('http')
 const fs = require('fs');
 const router = require('./router/index')
 const app = express();
-const port = process.env.PORT || 80;
+const httport = process.env.PORT || 443;
+const httpsport = process.env.PORT || 80;
 const {engine} = require('express-handlebars');
 const path = require('path');
 https.createServer({
     key: fs.readFileSync('/etc/letsencrypt/live/territoriofernando.ddns.net/privkey.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/live/territoriofernando.ddns.net/fullchain.pem')
-}, app).listen(port, ()=> {})
+}, app).listen(httpsport, ()=> {})
+http.createServer(function(req, res){
+    res.writeHead(301, {"Location":"https//" + req.headers['host'] + req.url});
+    res.end();
+}).listen(80);
+
 
 //Habilitamos handlebars como view
 app.engine('handlebars', engine({defaultLayout: 'layout'}));
