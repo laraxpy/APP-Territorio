@@ -13,7 +13,7 @@ https.createServer({
     cert: fs.readFileSync('/etc/letsencrypt/live/territoriofernando.ddns.net/fullchain.pem')
 }, app).listen(httpsport, ()=> {})
 http.createServer(function(req, res){
-    res.writeHead(301, {"Location":"" });//+ req.headers['host'] + req.url
+    res.writeHead(301, {Location:"https://territoriofernando.ddns.net" });//+ req.headers['host'] + req.url
     res.end();
 }).listen(80);
 
