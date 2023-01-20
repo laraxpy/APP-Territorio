@@ -4,6 +4,8 @@ exports.redirector =(req, res, next) => {
     if(req.secure){
         res.send('Seguro')
         //return res.redirect("https//");
+    }else{
+        res.send('Inseguro')
     }
     next();
 }
